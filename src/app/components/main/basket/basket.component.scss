@@ -1,0 +1,64 @@
+img{
+  max-width: 40px;
+}
+.wrapper{
+  min-height: 700px;
+}
+
+ul{
+  border: 2px solid #eeeeee;
+  border-radius: 5px;
+  padding: 20px ;
+  li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #87767630;
+    padding:10px;
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+  button {
+    border: none;
+    background-color: transparent ;
+    cursor: pointer;
+    font-size: 16px ;
+    padding: 10px;
+  }
+  .dell{
+    //border: 1.5px solid red;
+    //border-radius: 5px;
+    background-image: url("../../../../assets/img-kinder/close.png");
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 45px;
+    background-position: center;
+    &:hover{
+      transition: .4s;
+    }
+  }
+}
+
+.wrap_ampty{
+  display: flex;
+  justify-content: center;
+  border: 2px solid #f88877;
+  border-radius: 5px ;
+  padding: 10px;
+}
+
+.example-tooltip-red{
+  background: #b71c1c
+}
+
+
+.basketIsAmpty{
+  font-size: 20px;
+  color: #6a5353;
+  font-family: "Rage Italic";
+  a{
+    text-decoration: none;
+    color: blue;
+  }
+}

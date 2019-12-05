@@ -1,0 +1,23 @@
+
+.allBG{
+  background-color: #faf5ed;
+}
+
+
+.wrap{
+  display: flex;
+
+
+
+  .aside{
+    width: 20%;
+
+  }
+  .main{
+    width:  80%;
+    padding: 20px;
+    min-height: 456px;
+
+
+  }
+}

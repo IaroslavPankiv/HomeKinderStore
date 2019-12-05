@@ -1,0 +1,37 @@
+<div class="wrapper" *ngIf="totalPrice">
+  <div class="total_price" >
+    <ul >
+      <li>Total price : {{totalPrice}} $</li>
+    </ul>
+  </div>
+  <ul *ngIf="items">
+    <li *ngFor="let item of items">
+      <img [src]="item.url" alt="phone">
+      <div class="title">{{item.title}}</div>
+      <div class="price">{{item.price}} $</div>
+      <div class="wrap">
+        <button (click)="countVal=countVal-1"
+                [disabled]="countVal<= 0"
+        ><i class="glyphicon glyphicon-minus"> - </i></button>
+        {{countVal}}
+        <button  (click)="countVal=countVal+1"> <i class="glyphicon glyphicon-plus"> + </i> </button>
+      </div>
+      <button  mat-raised-button
+               matTooltip="Dell this item from your basket"
+               matTooltipClass="example-tooltip-red"
+               aria-label="Button that shows a red tooltip"
+               matTooltipShowDelay="1000"
+               class="dell" (click)="dellItem(item)"
+      ></button>
+
+    </li>
+  </ul>
+</div>
+
+<ng-container *ngIf="items.length === 0">
+  <div class="wrap_ampty" >
+    <p class="basketIsAmpty"> Your basket is ampty, go to the <a [routerLink]="['/store']">Store</a> section.</p>
+  </div>
+</ng-container>
+
+

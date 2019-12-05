@@ -1,0 +1,39 @@
+img {
+  max-width: 160px;
+}
+
+.info_card {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  .left_side {
+    width: 20%;
+    border-right: 1px solid #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .right_side {
+    width: 80%;
+    padding-left: 25px;
+    .button {
+      display: flex;
+
+      a {
+        padding: 10px;
+        text-decoration: none;
+        transition: .4s;
+        border-radius: 4px;
+        color: #000000;
+        background-color: #f88877;
+        margin-top: 10px;
+        &:hover {
+          color: #ffffff;
+
+        }
+
+      }
+
+    }
+  }
+}

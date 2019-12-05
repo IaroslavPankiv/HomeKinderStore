@@ -1,0 +1,23 @@
+
+<div class="wrap">
+  <div class="wrap_card" *ngFor="let item of items">
+    <div class="card" *ngIf="item">
+      <img [src]="item.url" alt="kinder">
+      <h3
+      >{{item.title}}</h3>
+      <span> {{item.price}} $</span>
+      <div class="button">
+        <a (click)="toInfo(item)">Open</a>
+        <a (click)="addToBasket(item)">Add to basket</a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+
+
+
+
