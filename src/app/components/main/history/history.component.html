@@ -1,0 +1,13 @@
+<div class="history" >
+
+  <div class="story" *ngFor="let story of storys">
+    <div class="story_img">
+      <img class="img" [src]="story.url" alt="story text">
+    </div>
+    <div class="story_desc">
+      <div class="story_desc_title"><h2>{{story.title}}</h2></div>
+      <div class="story_desc_descryb"><p>{{story.desc}}</p></div>
+    </div>
+  </div>
+</div>
+

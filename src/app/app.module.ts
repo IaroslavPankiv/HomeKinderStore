@@ -29,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PostComponent } from './components/main/home/post/post.component';
+import { HistoryComponent } from './components/main/history/history.component';
 
 
 
@@ -45,6 +46,7 @@ import { PostComponent } from './components/main/home/post/post.component';
     ItemInfoComponent,
     HomeComponent,
     PostComponent,
+    HistoryComponent,
 
 
 

@@ -1,5 +1,42 @@
 footer{
   background-color: #f3410e;
   min-height: 80px;
+  z-index: 1;
+  display: flex;
+   .footer_logo{
+    width: 65%;
+     padding-left: 30px;
+  }
+  .footer_nav{
+    width: 35%;
+    display: flex;
+    align-items: center;
+
+
+  }
+  .footer_nav ul {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly;
+
+    li {
+      list-style: none;
+      a {
+        display: block;
+        transition: .4s;
+        font-size: 14px;
+        color: #ffffff;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+          color: #000000;
+          transform: scale(1.2);
+
+      }
+    }
+  }
+  }
+
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {PostHome} from "../../../interface";
+import {Item, PostHome} from "../../../interface";
 import {dataHome} from "../../../dataHome";
+import {HttpServeceService} from "../http-servece.service";
+import {Router} from "@angular/router";
 
 
 
@@ -20,7 +22,8 @@ export class HomeComponent implements OnInit {
   postHome:PostHome[];
 
 
-  constructor() { }
+  constructor(private httpServise: HttpServeceService,
+              private router: Router) { }
 
 
 
@@ -39,6 +42,15 @@ export class HomeComponent implements OnInit {
       {url: '../../../../assets/img-kinder/kinderSlider10.jpg'}
     ]
   }
+
+
+  private toInfo(post: PostHome) {
+    this.httpServise.post = post;
+
+    this.router.navigate(['/home/post']);
+  }
+
+
 
 
   private prev() {

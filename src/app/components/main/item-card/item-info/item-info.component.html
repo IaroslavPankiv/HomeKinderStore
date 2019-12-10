@@ -1,15 +1,15 @@
 <div class="info_card "
-  *ngIf="this.httpService"
+  *ngIf="this.httpServise"
      >
   <div class="left_side">
-    <img [src]="this.httpService.item?.url" alt="phone">
+    <img [src]="this.httpServise.item?.url" alt="kinder">
   </div>
   <div class="right_side">
-    <h3>Model: {{ this.httpService.item?.title}}</h3>
-    <div class="info">Describe: <p>Екран (4.7", IPS, 1334x750)/ Apple A10 Fusion/ основна камера: 12 Мп, фронтальна камера: 7 Мп/ RAM 2 ГБ/ 32 ГБ вбудованої пам'яті/ 3G/ LTE/ GPS/ Nano-SIM/ iOS 10</p></div>
-    <div class="price"> Price: {{this.httpService.item?.price}}$</div>
+    <h3>Series - {{ this.httpServise.item?.title}}</h3>
+    <div class="info"> <p>Екран (4.7", IPS, 1334x750)/ Apple A10 Fusion/ основна камера: 12 Мп, фронтальна камера: 7 Мп/ RAM 2 ГБ/ 32 ГБ вбудованої пам'яті/ 3G/ LTE/ GPS/ Nano-SIM/ iOS 10</p></div>
+    <div class="price"> Price: {{this.httpServise.item?.price}}$</div>
     <div class="button">
-      <a href="#">Add to basket</a>
+      <a (click)="addToBasket(this.httpServise.item)">Add to basket</a>
     </div>
 
   </div>

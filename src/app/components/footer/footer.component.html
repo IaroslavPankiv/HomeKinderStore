@@ -1,3 +1,14 @@
 <footer>
+  <div class="footer_logo">
+    <img class="footer_img" [src]="logoFoter.url" alt="logoKinder">
+  </div>
+  <div class="footer_nav">
+    <ul>
+      <li><a [routerLink]="['/home']" routerLinkActive="active">Home</a></li>
+      <li><a [routerLink]="['/store']" routerLinkActive="active">Store</a></li>
+      <li><a [routerLink]="['/basket']" routerLinkActive="active">Basket</a></li>
+      <li><a [routerLink]="['/history']" routerLinkActive="active">History</a></li>
+    </ul>
+  </div>
 
 </footer>

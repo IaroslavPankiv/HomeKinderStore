@@ -1,37 +1,74 @@
 <div class="wrapper" *ngIf="totalPrice">
   <div class="total_price" >
-    <ul >
+    <ul class="basket_header">
       <li>Total price : {{totalPrice}} $</li>
+      <li><button mat-raised-button (click)="ordering()" [disabled]="this.httpService.check.length< 1" color="warn">Order</button></li>
+
     </ul>
+
+
+
   </div>
   <ul *ngIf="items">
-    <li *ngFor="let item of items">
+    <li *ngFor="let item of items" >
       <img [src]="item.url" alt="phone">
       <div class="title">{{item.title}}</div>
       <div class="price">{{item.price}} $</div>
       <div class="wrap">
-        <button (click)="countVal=countVal-1"
-                [disabled]="countVal<= 0"
+        <button
+          [disabled]="item?.order === true"
+          (click)="item.number = item.number - 1 "
+                [disabled]="item.number<= 0"
         ><i class="glyphicon glyphicon-minus"> - </i></button>
-        {{countVal}}
-        <button  (click)="countVal=countVal+1"> <i class="glyphicon glyphicon-plus"> + </i> </button>
+        {{item.number}}
+        <button
+          [disabled]="item?.order === true"
+          (click)="item.number = item.number + 1"> <i class="glyphicon glyphicon-plus"> + </i> </button>
       </div>
       <button  mat-raised-button
+               [disabled]="item?.order === true"
                matTooltip="Dell this item from your basket"
                matTooltipClass="example-tooltip-red"
                aria-label="Button that shows a red tooltip"
                matTooltipShowDelay="1000"
                class="dell" (click)="dellItem(item)"
       ></button>
+      <button
+        [disabled]="item?.order === true"
+        mat-raised-button
+        matTooltip="confirm this item from your order"
+        matTooltipClass="example-tooltip-red"
+        aria-label="Button that shows a red tooltip"
+        matTooltipShowDelay="1000"
+        class="dell check" (click)="checkOrder(item)"
+      ></button>
 
     </li>
   </ul>
 </div>
 
-<ng-container *ngIf="items.length === 0">
+<ng-container *ngIf="items?.length === 0">
   <div class="wrap_ampty" >
     <p class="basketIsAmpty"> Your basket is ampty, go to the <a [routerLink]="['/store']">Store</a> section.</p>
   </div>
+</ng-container>
+
+
+
+<ng-container>
+  <ul *ngIf="order" class="basket_header order">
+    <li>Thank you for your order of our goods {{totalPrice}} </li>
+  </ul>
+</ng-container>
+<ng-container>
+  <ul *ngIf="bool" class="basket_header added">
+    <li>Kinder Surprise was added to order'</li>
+  </ul>
+</ng-container>
+<ng-container>
+  <ul *ngIf="notNumber" class="basket_header noadded">
+    <li>{{notNumber}}</li>
+  </ul>
 </ng-container>
 
 

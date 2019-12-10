@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpServeceService} from "../../http-servece.service";
+import {PostHome} from "../../../../interface";
 
 @Component({
   selector: 'app-post',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostComponent implements OnInit {
 
-  constructor() { }
+  post:PostHome;
+
+  constructor(private httServise: HttpServeceService) { }
 
   ngOnInit() {
+    this.post = this.httServise.post
   }
+
+
+
 
 }

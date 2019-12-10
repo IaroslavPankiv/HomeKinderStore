@@ -1,0 +1,25 @@
+.post{
+  width: 100%;
+  min-height: 200px;
+  background-color: #00c2caba;
+  padding: 20px;
+  border-radius: 3px;
+  .post_img{
+    display: flex;
+    justify-content: center;
+    img{
+
+    }
+  }
+  .post_title{
+    font-size: 23px;
+    padding: 10px ;
+  }
+  .post_desc{
+    padding: 10px;
+    font-size: 16px;
+    letter-spacing: 0.7px;
+    color: #000000;
+    line-height: 30px;
+  }
+}

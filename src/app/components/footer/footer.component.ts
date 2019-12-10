@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpServeceService} from "../main/http-servece.service";
+import {dataHome} from "../../dataHome";
+import {Item, PostHome} from "../../interface";
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  logoFoter:PostHome;
+
   constructor() { }
 
   ngOnInit() {
+    this.logoFoter = dataHome[0];
   }
 
 }

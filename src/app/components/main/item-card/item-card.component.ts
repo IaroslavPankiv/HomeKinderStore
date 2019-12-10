@@ -45,11 +45,13 @@ export class ItemCardComponent implements OnInit {
     // провіряю та записую в корзину
     if (this.httpServise.items.length == 0) {
       item.basket = true;
+      item.number = 1;
       this.httpServise.items.push(item);
       window.localStorage.setItem('arrItems', JSON.stringify(this.httpServise.items))
     }else {
       if (item.basket != true){
         item.basket = true;
+        item.number = 1;
             this.httpServise.items.push(item);
             window.localStorage.setItem('arrItems', JSON.stringify(this.httpServise.items))
       }
