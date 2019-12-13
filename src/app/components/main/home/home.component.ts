@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
 
 
   i =0;
-  images = []
+  images = [];
   postHome:PostHome[];
 
 
@@ -28,9 +28,7 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-
     this.postHome = dataHome;
-    console.log(dataHome)
     this.images = [
       {url: '../../../../assets/img-kinder/kinderSlider3.jpg'},
       {url: '../../../../assets/img-kinder/kinderSlider4.jpg'},
@@ -43,18 +41,16 @@ export class HomeComponent implements OnInit {
     ]
   }
 
-
+//роут на сторінку опис поста
   private toInfo(post: PostHome) {
     this.httpServise.post = post;
-
     this.router.navigate(['/home/post']);
   }
 
 
 
-
+  //слайдер в ліво
   private prev() {
-    console.log(this.images)
     if (this.i === 0) {
       this.i = 7;
     } else {
@@ -62,6 +58,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  //слайдер в право
   private next(){
       if (this.i === this.images.length-1){
         this.i = 0;

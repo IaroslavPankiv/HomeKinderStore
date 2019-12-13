@@ -17,8 +17,6 @@ export class HistoryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(dataHistory)
-    console.log(this.storys)
     this.storys = dataHistory
   }
 

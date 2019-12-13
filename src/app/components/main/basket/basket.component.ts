@@ -12,7 +12,7 @@ export class BasketComponent implements OnInit {
 
   countVal: number = 0;
   totalPrice;
-  items: Item [] = [];
+  items: Item [];
   bool:boolean =  false;
   notNumber:string = '';
   order:boolean = false;
@@ -22,13 +22,11 @@ export class BasketComponent implements OnInit {
 
   ngOnInit() {
     this.countPrice();
-
-
-
   }
 
-private ordering() {
-    console.log(this.httpService.check)
+
+  // замовлення
+  private ordering() {
     if (this.httpService.check.length >= 1){
       console.log('ff')
       this.order = true;
@@ -39,7 +37,6 @@ private ordering() {
       window.localStorage.removeItem('arrItems');
       window.localStorage.setItem('arrItems', JSON.stringify(this.httpService.check))
 
-
     }
 
 }
@@ -47,75 +44,70 @@ private ordering() {
 
   private countPrice() {
     //вивід ціни та товарів
-    if (this.httpService.check.length > 1) {
-      this.items = this.httpService.check;
-      this.totalPrice = this.totalPrice = this.items.map((i) => {
-        return i.price * i.number
+    this.items = window.localStorage.getItem('arrItems') ? JSON.parse(window.localStorage.getItem('arrItems')) : [];
+    if (this.items.length != 0) {
+      this.totalPrice = this.totalPrice = this.items.map((i) => i.price * i.number);
+      this.totalPrice = this.totalPrice.reduce((i, curVal) => i + curVal);
+    }
+  }
+
+
+
+ private dellItem(item: Item) {
+         // видалення товара
+      item.basket = false;
+      let items = JSON.parse(window.localStorage.getItem('arrItems'))
+      items.map(i => {
+         return i.id == item.id ? i.basket = false: console.log('p')
+          });
+      window.localStorage.setItem('arrItems', JSON.stringify(items))
+      items = JSON.parse(window.localStorage.getItem('arrItems')).filter(i => i.id != item.id);
+      window.localStorage.setItem('arrItems', JSON.stringify(items))
+      this.httpService.items = items;
+      this.items = items;
+      if (this.httpService.items.length === 0) {
+        this.totalPrice = 0;
+      }
+      this.countPrice();
+  }
+
+  //підтвердження замовлення
+  private checkOrder(item) {
+    if (item.number > 0) {
+      item.order = true;
+      item.basket = false;
+      this.httpService.check.push(item);
+      this.bool = true;
+      let items = JSON.parse(window.localStorage.getItem('arrItems'));
+      items.map(i => {
+        if (i.id===item.id) {
+          i.order = true;
+          i.number = item.number;
+        }
+        return i
       });
-      this.totalPrice = this.totalPrice.reduce((i, curVal) => {
-        return i + curVal;
-      });
-    } else{
-      this.items = JSON.parse(window.localStorage.getItem('arrItems'));
-      if (this.items.length != 0) {
-        this.totalPrice = this.items.map((i) => {
-          return i.price
-        });
-        this.totalPrice = this.totalPrice.reduce((i, curVal) => {
-          return i + curVal;
-        });
+      window.localStorage.setItem('arrItems', JSON.stringify(items));
+      this.totalPrice = this.totalPrice = this.items.map((i) => i.price * i.number);
+      this.totalPrice = this.totalPrice.reduce((i, curVal) => i + curVal);
+
+      setTimeout(()=>{
+        this.bool = false;
+      },1500)
+
+    }
+      else {
+          this.notNumber = 'add quantity';
+        setTimeout(()=>{
+          this.notNumber = ''
+         },3000)
       }
     }
 
 
 
 
-    }
 
 
-
- private dellItem(item: Item) {
-      // видалення товара
-    const items = JSON.parse(window.localStorage.getItem('arrItems')).filter(i => i.id != item.id);
-   window.localStorage.setItem('arrItems', JSON.stringify(items))
-   this.httpService.items = items;
-
-   if (this.httpService.items.length === 0) {
-     this.totalPrice = 0;
-   }
-
-   this.countPrice()
-  }
-
-
-
-  private checkOrder(item) {
-    if (item.number > 0) {
-      item.order = true;
-      this.httpService.check.push(item);
-      this.bool = true;
-      this.totalPrice = this.totalPrice = this.items.map((i) => {
-        return i.price * i.number
-      });
-      this.totalPrice = this.totalPrice.reduce((i, curVal) => {
-        return i + curVal;
-      });
-
-      setTimeout(()=>{
-        this.bool = false;
-      },1500)
-      console.log(this.httpService.check)
-
-    }else {
-        this.notNumber = 'add quantity';
-      setTimeout(()=>{
-        this.notNumber = ''
-       },3000)
-    }
-
-
-
-    }
 
 
 }

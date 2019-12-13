@@ -18,45 +18,49 @@ export class ItemCardComponent implements OnInit {
 
 
   constructor(private router: Router,
-              private httpServise: HttpServeceService
-  ) {
+              private httpServise: HttpServeceService) {
   }
 
   ngOnInit() {
-
+    console.log('ppp')
   }
 
-  // getAllItems() {
-  //   return this.httpService.getAllItems().subscribe(
-  //     resp=>{this.items = resp},
-  //
-  //     err=>{console.log(err)})
-  // }
-
-
+  //роут на сторінку товара
   private toInfo(item: Item) {
-    this.httpServise.item = item;
+      this.httpServise.item = item;
 
-    this.router.navigate(['/store/itemInfo']);
-  }
+      this.router.navigate(['/store/itemInfo']);
+    }
 
 
   private addToBasket(item: Item) {
     // провіряю та записую в корзину
-    if (this.httpServise.items.length == 0) {
-      item.basket = true;
+    if (this.httpServise.items.length === 0) {
       item.number = 1;
+      item.basket = true;
       this.httpServise.items.push(item);
       window.localStorage.setItem('arrItems', JSON.stringify(this.httpServise.items))
-    }else {
-      if (item.basket != true){
+    }
+    else {
+      let filter = this.httpServise.items.filter((i) => i.id == item.id);
+      if(filter.length === 0) {
         item.basket = true;
         item.number = 1;
-            this.httpServise.items.push(item);
-            window.localStorage.setItem('arrItems', JSON.stringify(this.httpServise.items))
+        this.httpServise.items.push(item);
+        window.localStorage.setItem('arrItems', JSON.stringify(this.httpServise.items));
       }
     }
-    }
+
+  }
+
+
+
+
+
+
+
+
+
 
 
 

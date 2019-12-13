@@ -12,7 +12,8 @@ export class AsideComponent implements OnInit {
   ngOnInit() {
   }
 
-  toKinder() {
+  //редірект на сайт кіндера
+ private toKinder() {
     window.location.href='https://www.kinder.com'
   }
 }

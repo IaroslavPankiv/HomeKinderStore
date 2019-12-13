@@ -3,10 +3,25 @@
     <ul class="basket_header">
       <li>Total price : {{totalPrice}} $</li>
       <li><button mat-raised-button (click)="ordering()" [disabled]="this.httpService.check.length< 1" color="warn">Order</button></li>
-
     </ul>
 
+    <ng-container *ngIf="order">
+      <ul  class="basket_header order">
+        <li>Thank you for your order of our goods {{totalPrice}} </li>
+      </ul>
+    </ng-container>
 
+    <ng-container>
+      <ul *ngIf="bool" class="basket_header added">
+        <li>Kinder Surprise was added to order'</li>
+      </ul>
+    </ng-container>
+
+    <ng-container>
+      <ul *ngIf="notNumber" class="basket_header noadded">
+        <li>{{notNumber}}</li>
+      </ul>
+    </ng-container>
 
   </div>
   <ul *ngIf="items">
@@ -20,10 +35,10 @@
           (click)="item.number = item.number - 1 "
                 [disabled]="item.number<= 0"
         ><i class="glyphicon glyphicon-minus"> - </i></button>
-        {{item.number}}
+        {{item?.number}}
         <button
           [disabled]="item?.order === true"
-          (click)="item.number = item.number + 1"> <i class="glyphicon glyphicon-plus"> + </i> </button>
+          (click)="item.number = item?.number + 1"> <i class="glyphicon glyphicon-plus"> + </i> </button>
       </div>
       <button  mat-raised-button
                [disabled]="item?.order === true"
@@ -42,7 +57,6 @@
         matTooltipShowDelay="1000"
         class="dell check" (click)="checkOrder(item)"
       ></button>
-
     </li>
   </ul>
 </div>
@@ -52,23 +66,4 @@
     <p class="basketIsAmpty"> Your basket is ampty, go to the <a [routerLink]="['/store']">Store</a> section.</p>
   </div>
 </ng-container>
-
-
-
-<ng-container>
-  <ul *ngIf="order" class="basket_header order">
-    <li>Thank you for your order of our goods {{totalPrice}} </li>
-  </ul>
-</ng-container>
-<ng-container>
-  <ul *ngIf="bool" class="basket_header added">
-    <li>Kinder Surprise was added to order'</li>
-  </ul>
-</ng-container>
-<ng-container>
-  <ul *ngIf="notNumber" class="basket_header noadded">
-    <li>{{notNumber}}</li>
-  </ul>
-</ng-container>
-
 

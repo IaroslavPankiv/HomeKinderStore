@@ -9,7 +9,7 @@ export class HttpServeceService {
 
   items:Item[] = window.localStorage.getItem('arrItems') ? JSON.parse(window.localStorage.getItem('arrItems')): [];
   item:Item;
-  sum;
+
   check:Item[] = [];
   post: PostHome;
 
@@ -18,13 +18,6 @@ export class HttpServeceService {
 
   constructor(private http: HttpClient) { }
 
-
-// public getAllItems(){
-//
-//
-//     return this.http.get('https://jsonplaceholder.typicode.com/todos');
-//
-//   }
 
 
 
